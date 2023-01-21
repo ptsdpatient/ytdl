@@ -1,10 +1,10 @@
 @font-face {
     font-family: 'data';
-    src: url('/fonts/data.otf');
+    src: url('./fonts/data.otf');
 }
 @font-face{
     font-family:'head';
-    src: url('/fonts/head.otf');
+    src: url('./fonts/head.otf');
 }
 *:focus{
     outline:none;
@@ -17,13 +17,17 @@ body{
     top:0vw;
     left:43vw;
     height:12vw;
+    transition: all 0.5s;
+
 }
 .header:hover{
     cursor: pointer;
     opacity: 95%;
+    transform:translateY(-3px);
+    transition: all 0.5s;
+
 }
 .type input{
-    
     position:absolute;
     border-style: none;
     background-color:rgba(240, 248, 255, 0);
@@ -32,41 +36,53 @@ body{
     color:#1e053b;
     font-family: head;
     box-shadow:0px 0px 0px 0px #1e053b;
+    transition:all 0.5s;
 }
 .type input:hover{
     /* text-decoration: underline; */
     cursor:pointer;
     box-shadow:0px 3px 0px 0px #1e053b;
     font-size:2.506vw;
+    transform:translateY(-1px);
     transition: all 0.5s;;
 }
 #sb{
     top:20vw;
     left:32vw;
     width:31vw;
+    font-family: head;
+    font-weight:bolder;
     text-indent:10px;
     color:rgb(255, 255, 255);
-    background-color: #2b2b2bea;
+    background-color: rgb(46, 46, 46);
     border-style: none;
+    transition:all 0.5s;
 }
-#sb:focus{
-    color:rgb(255, 255, 255);
-    background-color: #38393aea;
+#sb:hover{
+    box-shadow:0px 3px 5px 1px #2377dd;
+    transform:translateY(-1px);
+
+    transition:all 0.5s;
 }
+
 #pfc{
     top:20vw;
     left:64vw;
     width:5vw;
+    font-family: head;
+    font-weight:bolder;
     color:#2b2b2bea;
-    border-color: #2b2b2bea;
+    border-color: #0e0036ea;
     background-color: rgb(240, 240, 240);
     transition:all 0.5s;
 
 }
 #pfc:hover{
-    background-color: cornflowerblue;
-    color:aliceblue;
-    transition:all 0.5s 0s 0.5s;
+    background-color: rgb(50, 156, 255);
+    box-shadow:0px 3px 5px 2px #2377dd;
+    color:rgb(255, 255, 255);
+    transform:translateY(-3px);
+    transition:all 0.5s;
     cursor:pointer;
 }
 
