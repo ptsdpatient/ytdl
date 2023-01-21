@@ -10,8 +10,48 @@
     <body>
         <script src="server.js"></script>
        <img class="header" src="icon.webp">
-       <div class="type"><input type="submit" style="left:38vw;" value="Video"><input type="submit" style="left:52vw;" value="Audio"></div>       
-       <input id="sb" type="text" class="search_bar" placeholder="https://www.youtube.com/watch?v=XXXXXXXXX">
-       <input id="pfc" type="submit" class="search_bar" value="paste">
+       <input class="type" id="t_v" type="submit" style="left:38vw;" value="Video" onclick="select_type('t_v')"><input type="submit" class="type" id="t_a" style="left:52vw;" value="Audio" onclick="select_type('t_a')">      
+       <input id="sb" type="text" class="search_bar" placeholder="https://www.youtube.com/watch?v=XXXXXXXXX" onfocus="hidetooltip()">  
+       <input id="tt" type="submit" value="">
+       <div class="btn"><input id="pfc" type="submit" class="search_bar" value="paste" onclick="pastecb()"><input id="download" type="submit" class="search_bar" value="download" onclick="download()"></div>
+       <script>
+ 
+        function select_type(id){
+            var obj=document.getElementById(id).classList;
+            switch(id){
+                case 't_v': document.getElementById('t_a').classList.remove('type_s'); break;
+                case 't_a': document.getElementById('t_v').classList.remove('type_s'); break;
+            }        
+            if(!obj.contains('type_s')) obj.add('type_s');
+            else obj.remove('type_s');
+        }
+         function pastecb(){
+            var pasteButton = document.getElementById("pfc");      
+                pasteButton.addEventListener('click', async () => {
+            try {
+            const text = await navigator.clipboard.readText();    
+            document.getElementById('sb').value=text; 
+            } 
+            catch (error) {
+                console('copy failed');
+            }
+            });
+        } 
+        function download(){
+            var url=document.getElementById("sb").value;
+            if(!(url.startsWith("https://www.youtube.com/"))) atooltip(url); 
+        }
+        function atooltip(url){
+        var obj = document.getElementById("tt");
+        if(url=='') url='empty_space'; 
+        obj.value=`⚠️ "${url}" is not a valid link`;
+        obj.classList.add('tooltip');
+        }
+        function hidetooltip(){
+            var obj = document.getElementById("tt");
+            obj.classList.remove('tooltip');
+        }
+       </script>
+
     </body>
 </html>
